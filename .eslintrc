@@ -1,0 +1,22 @@
+{
+  "extends": "eslint-config-rallycoding",
+  "rules": {
+    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
+    "no-nested-ternary": "error",
+    "react/self-closing-comp": ["error", {
+      "component": false,
+      "html": false
+    }],
+    "max-len": ["error", { "ignoreUrls": true, "ignoreStrings": true, "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true }],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-unused-expressions": ["error", { "allowShortCircuit": true, "allowTernary": true }]
+  },
+  "env": {
+    "es6": true,
+    "browser": true,
+    "node": true,
+    "jasmine": true,
+    "jquery": true,
+    "mocha": true
+  }
+}
