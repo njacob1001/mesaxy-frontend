@@ -1,4 +1,3 @@
-# Boilerplate for reactapp with client side rendering
+# Frontend para mesa XY Universidad Autonoma de occidente
 
-## Requisitos
-Instalar, VS Code y añadir ESlint y editor config
+## Hecho con reactjs
