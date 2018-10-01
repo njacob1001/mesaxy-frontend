@@ -18,7 +18,8 @@ class App extends Component {
     super();
     this.state = {
       estado: 0,
-      text: 'Presione iniciar para encender la mesaXY'
+      text: 'Presione iniciar para encender la mesaXY',
+      readState: false
     };
     this.cancel = this.cancel.bind(this);
     this.start = this.start.bind(this);
@@ -26,15 +27,12 @@ class App extends Component {
   }
 
   componentDidMount() {
-    this.algo = 'soy io xd';
-    console.log('didmount');
-
     this.intervalo = setInterval(() =>
       fetch('https://mesaxy.herokuapp.com/state', {
         credentials: 'same-origin'
       })
         .then(res => res.json())
-        .then(json => { this.setState({ estado: json.state, readState: false }); console.log('Intervalo aplicado'); })
+        .then(json => { this.setState({ estado: json.state, readState: json.allow }); console.log('Intervalo aplicado'); })
         .catch(err => console.log(`Error en fetch: ${err}`))
     , 2000);
   }
@@ -103,6 +101,7 @@ class App extends Component {
                   Estado Actual
                 </Typography>
                 <Chip
+                  color={this.state.readState ? 'primary' : 'default'}
                   label={this.state.estado === 0 ? '(Cargando...)' : this.state.estado}
                   style={styles.chip}
                 />
